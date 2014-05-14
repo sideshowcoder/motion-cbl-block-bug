@@ -1,0 +1,1637 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<struct name='CBLGeoPoint' type='{CBLGeoPoint=&quot;x&quot;d&quot;y&quot;d}'>
+<field declared_type='double' name='x' type='d'/>
+<field declared_type='double' name='y' type='d'/>
+</struct>
+<struct name='CBLGeoRect' type='{CBLGeoRect=&quot;min&quot;{CBLGeoPoint=&quot;x&quot;d&quot;y&quot;d}&quot;max&quot;{CBLGeoPoint=&quot;x&quot;d&quot;y&quot;d}}'>
+<field declared_type='CBLGeoPoint' name='min' type='{CBLGeoPoint=&quot;x&quot;d&quot;y&quot;d}'/>
+<field declared_type='CBLGeoPoint' name='max' type='{CBLGeoPoint=&quot;x&quot;d&quot;y&quot;d}'/>
+</struct>
+<struct name='CBLManagerOptions' type='{CBLManagerOptions=&quot;readOnly&quot;B}'>
+<field declared_type='_Bool' name='readOnly' type='B'/>
+</struct>
+<constant const='true' declared_type='NSString*' name='CBLHTTPErrorDomain' type='@'/>
+<constant const='true' declared_type='NSString*' name='kCBLDatabaseChangeNotification' type='@'/>
+<constant const='true' declared_type='NSString*' name='kCBLDocumentChangeNotification' type='@'/>
+<constant const='true' declared_type='NSString*' name='kCBLReplicationChangeNotification' type='@'/>
+<enum name='CBLJSONReadingAllowFragments' value='4'/>
+<enum name='CBLJSONReadingMutableContainers' value='1'/>
+<enum name='CBLJSONReadingMutableLeaves' value='2'/>
+<enum name='CBLJSONWritingAllowFragments' value='8388608'/>
+<enum name='CBLJSONWritingPrettyPrinted' value='1'/>
+<enum name='kCBLAllDocs' value='0'/>
+<enum name='kCBLIncludeDeleted' value='1'/>
+<enum name='kCBLOnlyConflicts' value='3'/>
+<enum name='kCBLReplicationActive' value='3'/>
+<enum name='kCBLReplicationIdle' value='2'/>
+<enum name='kCBLReplicationOffline' value='1'/>
+<enum name='kCBLReplicationStopped' value='0'/>
+<enum name='kCBLShowConflicts' value='2'/>
+<enum name='kCBLUpdateIndexAfter' value='2'/>
+<enum name='kCBLUpdateIndexBefore' value='0'/>
+<enum name='kCBLUpdateIndexNever' value='1'/>
+<function name='CBLGeoCoordPairToPoint'>
+<arg declared_type='NSArray*' name='coords' type='@'/>
+<arg declared_type='CBLGeoPoint*' name='outPoint' type='^{CBLGeoPoint=dd}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='CBLGeoCoordsStringToRect'>
+<arg declared_type='NSString*' name='coordsStr' type='@'/>
+<arg declared_type='CBLGeoRect*' name='outRect' type='^{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='CBLGeoCoordsToRect'>
+<arg declared_type='NSArray*' name='coords' type='@'/>
+<arg declared_type='CBLGeoRect*' name='outRect' type='^{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='CBLGeoJSONBoundingBox'>
+<arg declared_type='NSDictionary*' name='geoJSON' type='@'/>
+<arg declared_type='CBLGeoRect*' name='outBBox' type='^{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='CBLGeoJSONKey'>
+<arg declared_type='NSDictionary*' name='geoJSON' type='@'/>
+<retval declared_type='id' type='@'/>
+</function>
+<function name='CBLGeoPointKey'>
+<arg declared_type='double' name='x' type='d'/>
+<arg declared_type='double' name='y' type='d'/>
+<retval declared_type='id' type='@'/>
+</function>
+<function name='CBLGeoPointToCoordPair'>
+<arg declared_type='CBLGeoPoint' name='pt' type='{CBLGeoPoint=dd}'/>
+<retval declared_type='NSArray*' type='@'/>
+</function>
+<function name='CBLGeoPointToJSON'>
+<arg declared_type='CBLGeoPoint' name='pt' type='{CBLGeoPoint=dd}'/>
+<retval declared_type='NSDictionary*' type='@'/>
+</function>
+<function inline='true' name='CBLGeoRectEqual'>
+<arg declared_type='CBLGeoRect' name='a' type='{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+<arg declared_type='CBLGeoRect' name='b' type='{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function inline='true' name='CBLGeoRectIsEmpty'>
+<arg declared_type='CBLGeoRect' name='r' type='{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<function name='CBLGeoRectKey'>
+<arg declared_type='double' name='x0' type='d'/>
+<arg declared_type='double' name='y0' type='d'/>
+<arg declared_type='double' name='x1' type='d'/>
+<arg declared_type='double' name='y1' type='d'/>
+<retval declared_type='id' type='@'/>
+</function>
+<function name='CBLGeoRectToJSON'>
+<arg declared_type='CBLGeoRect' name='rect' type='{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+<retval declared_type='NSDictionary*' type='@'/>
+</function>
+<function name='CBLTextKey'>
+<arg declared_type='NSString*' name='text' type='@'/>
+<retval declared_type='id' type='@'/>
+</function>
+<function name='CBLVersion'>
+<retval declared_type='NSString*' type='@'/>
+</function>
+<function name='MYClassFromType'>
+<arg const='true' declared_type='char*' name='propertyType' type='*'/>
+<retval declared_type='Class' type='#'/>
+</function>
+<function name='MYGetPropertyInfo'>
+<arg declared_type='Class' name='cls' type='#'/>
+<arg declared_type='NSString*' name='propertyName' type='@'/>
+<arg declared_type='BOOL' name='setter' type='B'/>
+<arg declared_type='Class*' name='declaredInClass' type='^#'/>
+<arg const='true' declared_type='char**' name='propertyType' type='^*'/>
+<retval declared_type='BOOL' type='B'/>
+</function>
+<class name='CBLAttachment'>
+<method selector='content'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method selector='contentType'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='contentURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='document'>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='length'>
+<retval declared_type='UInt64' type='Q'/>
+</method>
+<method selector='metadata'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='name'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='revision'>
+<retval declared_type='CBLRevision*' type='@'/>
+</method>
+</class>
+<class name='CBLDatabase'>
+<method selector='allReplications'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='autosaveAllModels:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='compact:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='createAllDocumentsQuery'>
+<retval declared_type='CBLQuery*' type='@'/>
+</method>
+<method selector='createDocument'>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='createPullReplication:'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<retval declared_type='CBLReplication*' type='@'/>
+</method>
+<method selector='createPushReplication:'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<retval declared_type='CBLReplication*' type='@'/>
+</method>
+<method selector='deleteDatabase:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='deleteLocalDocumentWithID:error:'>
+<arg declared_type='NSString*' index='0' name='localDocID' null_accepted='false' type='@'/>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='doAsync:'>
+<arg declared_type='void (^)()' function_pointer='true' index='0' name='block' null_accepted='false' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='doSync:'>
+<arg declared_type='void (^)()' function_pointer='true' index='0' name='block' null_accepted='false' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='documentCount'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='documentWithID:'>
+<arg declared_type='NSString*' index='0' name='docID' null_accepted='false' type='@'/>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='existingDocumentWithID:'>
+<arg declared_type='NSString*' index='0' name='docID' null_accepted='false' type='@'/>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='existingLocalDocumentWithID:'>
+<arg declared_type='NSString*' index='0' name='localDocID' null_accepted='false' type='@'/>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='existingViewNamed:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<retval declared_type='CBLView*' type='@'/>
+</method>
+<method class_method='true' selector='filterCompiler'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='filterNamed:'>
+<arg declared_type='NSString*' index='0' name='filterName' null_accepted='false' type='@'/>
+<retval declared_type='CBLFilterBlock' function_pointer='true' type='@?'>
+<arg declared_type='CBLSavedRevision*' type='@'/>
+<arg declared_type='NSDictionary*' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</retval>
+</method>
+<method selector='inTransaction:'>
+<arg declared_type='BOOL (^)(void)' function_pointer='true' index='0' name='block' null_accepted='false' type='@?'>
+<retval declared_type='BOOL' type='B'/>
+</arg>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='internalURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='lastSequenceNumber'>
+<retval declared_type='SInt64' type='q'/>
+</method>
+<method selector='manager'>
+<retval declared_type='CBLManager*' type='@'/>
+</method>
+<method selector='maxRevTreeDepth'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='modelFactory'>
+<retval declared_type='CBLModelFactory*' type='@'/>
+</method>
+<method selector='name'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='objectForKeyedSubscript:'>
+<arg declared_type='NSString*' index='0' name='key' null_accepted='false' type='@'/>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='putLocalDocument:withID:error:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<arg declared_type='NSString*' index='1' name='localDocID' null_accepted='false' type='@'/>
+<arg declared_type='NSError**' index='2' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='replaceUUIDs:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='saveAllModels:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='setFilterCompiler:'>
+<arg declared_type='id' index='0' name='compiler' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFilterNamed:asBlock:'>
+<arg declared_type='NSString*' index='0' name='filterName' null_accepted='false' type='@'/>
+<arg declared_type='CBLFilterBlock' function_pointer='true' index='1' name='filterBlock' type='@?'>
+<arg declared_type='CBLSavedRevision*' type='@'/>
+<arg declared_type='NSDictionary*' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMaxRevTreeDepth:'>
+<arg declared_type='NSUInteger' index='0' name='maxRevTreeDepth' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setModelFactory:'>
+<arg declared_type='CBLModelFactory*' index='0' name='modelFactory' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setValidationNamed:asBlock:'>
+<arg declared_type='NSString*' index='0' name='validationName' null_accepted='false' type='@'/>
+<arg declared_type='CBLValidationBlock' function_pointer='true' index='1' name='validationBlock' type='@?'>
+<arg declared_type='CBLRevision*' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='slowQueryWithMap:'>
+<arg declared_type='CBLMapBlock' function_pointer='true' index='0' name='mapBlock' null_accepted='false' type='@?'>
+<arg declared_type='NSDictionary*' type='@'/>
+<arg declared_type='CBLMapEmitBlock' function_pointer='true' type='@?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='CBLQuery*' type='@'/>
+</method>
+<method selector='unsavedModels'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='validationNamed:'>
+<arg declared_type='NSString*' index='0' name='validationName' null_accepted='false' type='@'/>
+<retval declared_type='CBLValidationBlock' function_pointer='true' type='@?'>
+<arg declared_type='CBLRevision*' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='void' type='v'/>
+</retval>
+</method>
+<method selector='viewNamed:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<retval declared_type='CBLView*' type='@'/>
+</method>
+</class>
+<class name='CBLDatabaseChange'>
+<method selector='documentID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='inConflict'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isCurrentRevision'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='revisionID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='source'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+</class>
+<class name='CBLDocument'>
+<method selector='abbreviatedID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='currentRevision'>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='currentRevisionID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='database'>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='deleteDocument:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='documentID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='getConflictingRevisions:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='getLeafRevisions:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='getRevisionHistory:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='isDeleted'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isGone'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='modelObject'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='newRevision'>
+<retval declared_type='CBLUnsavedRevision*' type='@'/>
+</method>
+<method selector='objectForKeyedSubscript:'>
+<arg declared_type='NSString*' index='0' name='key' null_accepted='false' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='properties'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='propertyForKey:'>
+<arg declared_type='NSString*' index='0' name='key' null_accepted='false' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='purgeDocument:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='putProperties:error:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' null_accepted='false' type='@'/>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='revisionWithID:'>
+<arg declared_type='NSString*' index='0' name='revisionID' type='@'/>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='setModelObject:'>
+<arg declared_type='id' index='0' name='modelObject' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='update:error:'>
+<arg declared_type='BOOL (^)(CBLUnsavedRevision *)' function_pointer='true' index='0' name='block' null_accepted='false' type='@?'>
+<arg declared_type='CBLUnsavedRevision*' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</arg>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='userProperties'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+</class>
+<class name='CBLFullTextQueryRow'>
+<method selector='fullText'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='matchCount'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='snippetWithWordStart:wordEnd:'>
+<arg declared_type='NSString*' index='0' name='wordStart' type='@'/>
+<arg declared_type='NSString*' index='1' name='wordEnd' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='termIndexOfMatch:'>
+<arg declared_type='NSUInteger' index='0' name='matchNumber' type='I' type64='Q'/>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='textRangeOfMatch:'>
+<arg declared_type='NSUInteger' index='0' name='matchNumber' type='I' type64='Q'/>
+<retval declared_type='NSRange' type='{_NSRange=II}' type64='{_NSRange=QQ}'/>
+</method>
+</class>
+<class name='CBLGeoQueryRow'>
+<method selector='boundingBox'>
+<retval declared_type='CBLGeoRect' type='{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+</method>
+<method selector='geometry'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='geometryType'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='CBLJSON'>
+<method class_method='true' selector='JSONObjectWithDate:'>
+<arg declared_type='NSDate*' index='0' name='date' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method class_method='true' selector='absoluteTimeWithJSONObject:'>
+<arg declared_type='id' index='0' name='jsonObject' type='@'/>
+<retval declared_type='CFAbsoluteTime' type='d'/>
+</method>
+<method class_method='true' selector='appendDictionary:toJSONDictionaryData:'>
+<arg declared_type='NSDictionary*' index='0' name='dict' type='@'/>
+<arg declared_type='NSData*' index='1' name='json' type='@'/>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method class_method='true' selector='base64StringWithData:'>
+<arg declared_type='NSData*' index='0' name='data' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method class_method='true' selector='dataWithBase64String:'>
+<arg declared_type='id' index='0' name='jsonObject' type='@'/>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method class_method='true' selector='dateWithJSONObject:'>
+<arg declared_type='id' index='0' name='jsonObject' type='@'/>
+<retval declared_type='NSDate*' type='@'/>
+</method>
+<method class_method='true' selector='stringWithJSONObject:options:error:'>
+<arg declared_type='id' index='0' name='obj' type='@'/>
+<arg declared_type='CBLJSONWritingOptions' index='1' name='opt' type='I' type64='Q'/>
+<arg declared_type='NSError**' index='2' name='error' type='^@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method class_method='true' selector='valueAtPointer:inObject:'>
+<arg declared_type='NSString*' index='0' name='pointer' type='@'/>
+<arg declared_type='id' index='1' name='object' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='CBLLazyArrayOfJSON'>
+<method selector='initWithMutableArray:'>
+<arg declared_type='NSMutableArray*' index='0' name='array' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='CBLLiveQuery'>
+<method selector='lastError'>
+<retval declared_type='NSError*' type='@'/>
+</method>
+<method selector='rows'>
+<retval declared_type='CBLQueryEnumerator*' type='@'/>
+</method>
+<method selector='start'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='stop'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='waitForRows'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='CBLManager'>
+<method selector='allDatabaseNames'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='backgroundTellDatabaseNamed:to:'>
+<arg declared_type='NSString*' index='0' name='dbName' type='@'/>
+<arg declared_type='void (^)(CBLDatabase *)' function_pointer='true' index='1' name='block' type='@?'>
+<arg declared_type='CBLDatabase*' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='close'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='copy'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='customHTTPHeaders'>
+<retval declared_type='NSMutableDictionary*' type='@'/>
+</method>
+<method selector='databaseNamed:error:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method class_method='true' selector='defaultDirectory'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='directory'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='dispatchQueue'>
+<retval declared_type='dispatch_queue_t' type='@'/>
+</method>
+<method selector='doAsync:'>
+<arg declared_type='void (^)()' function_pointer='true' index='0' name='block' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='enableLogging:'>
+<arg declared_type='NSString*' index='0' name='type' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='existingDatabaseNamed:error:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='init'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithDirectory:options:error:'>
+<arg declared_type='NSString*' index='0' name='directory' null_accepted='false' type='@'/>
+<arg const='true' declared_type='CBLManagerOptions*' index='1' name='options' type='^{CBLManagerOptions=B}'/>
+<arg declared_type='NSError**' index='2' name='outError' type='^@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='internalURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method class_method='true' selector='isValidDatabaseName:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='objectForKeyedSubscript:'>
+<arg declared_type='NSString*' index='0' name='key' null_accepted='false' type='@'/>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='replaceDatabaseNamed:withDatabaseFile:withAttachments:error:'>
+<arg declared_type='NSString*' index='0' name='databaseName' null_accepted='false' type='@'/>
+<arg declared_type='NSString*' index='1' name='databasePath' null_accepted='false' type='@'/>
+<arg declared_type='NSString*' index='2' name='attachmentsPath' type='@'/>
+<arg declared_type='NSError**' index='3' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setDispatchQueue:'>
+<arg declared_type='dispatch_queue_t' index='0' name='dispatchQueue' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='sharedInstance'>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='CBLModel'>
+<method selector='attachmentNamed:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<retval declared_type='CBLAttachment*' type='@'/>
+</method>
+<method selector='attachmentNames'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='autosaveDelay'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method selector='autosaves'>
+<retval declared_type='_Bool' type='B'/>
+</method>
+<method selector='database'>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='databaseForModelProperty:'>
+<arg declared_type='NSString*' index='0' name='propertyName' null_accepted='false' type='@'/>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='deleteDocument:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='didLoadFromDocument'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='document'>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='getValueOfProperty:'>
+<arg declared_type='NSString*' index='0' name='property' null_accepted='false' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='idForNewDocumentInDatabase:'>
+<arg declared_type='CBLDatabase*' index='0' name='db' null_accepted='false' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='init'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithDocument:'>
+<arg declared_type='CBLDocument*' index='0' name='document' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithNewDocumentInDatabase:'>
+<arg declared_type='CBLDatabase*' index='0' name='database' null_accepted='false' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='isNew'>
+<retval declared_type='_Bool' type='B'/>
+</method>
+<method class_method='true' selector='itemClassForArrayProperty:'>
+<arg declared_type='NSString*' index='0' name='property' type='@'/>
+<retval declared_type='Class' type='#'/>
+</method>
+<method selector='markExternallyChanged'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='markNeedsSave'>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='modelForDocument:'>
+<arg declared_type='CBLDocument*' index='0' name='document' null_accepted='false' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='needsSave'>
+<retval declared_type='_Bool' type='B'/>
+</method>
+<method selector='propertiesToSave'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='propertiesToSaveForDeletion'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='removeAttachmentNamed:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='revertChanges'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='save:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='saveModels:error:'>
+<arg declared_type='NSArray*' index='0' name='models' type='@'/>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setAttachmentNamed:withContentType:content:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<arg declared_type='NSString*' index='1' name='mimeType' null_accepted='false' type='@'/>
+<arg declared_type='NSData*' index='2' name='content' null_accepted='false' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAttachmentNamed:withContentType:contentURL:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<arg declared_type='NSString*' index='1' name='mimeType' null_accepted='false' type='@'/>
+<arg declared_type='NSURL*' index='2' name='fileURL' null_accepted='false' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAutosaves:'>
+<arg declared_type='_Bool' index='0' name='autosaves' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDatabase:'>
+<arg declared_type='CBLDatabase*' index='0' name='database' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setValue:ofProperty:'>
+<arg declared_type='id' index='0' name='value' type='@'/>
+<arg declared_type='NSString*' index='1' name='property' null_accepted='false' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='timeSinceExternallyChanged'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+</class>
+<class name='CBLModelFactory'>
+<method selector='classForDocument:'>
+<arg declared_type='CBLDocument*' index='0' name='document' null_accepted='false' type='@'/>
+<retval declared_type='Class' type='#'/>
+</method>
+<method selector='classForDocumentType:'>
+<arg declared_type='NSString*' index='0' name='type' null_accepted='false' type='@'/>
+<retval declared_type='Class' type='#'/>
+</method>
+<method selector='modelForDocument:'>
+<arg declared_type='CBLDocument*' index='0' name='document' null_accepted='false' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='registerClass:forDocumentType:'>
+<arg declared_type='id' index='0' name='classOrName' type='@'/>
+<arg declared_type='NSString*' index='1' name='type' null_accepted='false' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='sharedInstance'>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='CBLQuery'>
+<method selector='allDocsMode'>
+<retval declared_type='CBLAllDocsMode' type='i'/>
+</method>
+<method selector='asLiveQuery'>
+<retval declared_type='CBLLiveQuery*' type='@'/>
+</method>
+<method selector='boundingBox'>
+<retval declared_type='CBLGeoRect' type='{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+</method>
+<method selector='database'>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='descending'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='endKey'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='endKeyDocID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='fullTextQuery'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='fullTextRanking'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='fullTextSnippets'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='groupLevel'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='indexUpdateMode'>
+<retval declared_type='CBLIndexUpdateMode' type='i'/>
+</method>
+<method selector='keys'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='limit'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='mapOnly'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='prefetch'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='run:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='CBLQueryEnumerator*' type='@'/>
+</method>
+<method selector='runAsync:'>
+<arg declared_type='void (^)(CBLQueryEnumerator *, NSError *)' function_pointer='true' index='0' name='onComplete' null_accepted='false' type='@?'>
+<arg declared_type='CBLQueryEnumerator*' type='@'/>
+<arg declared_type='NSError*' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAllDocsMode:'>
+<arg declared_type='CBLAllDocsMode' index='0' name='allDocsMode' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setBoundingBox:'>
+<arg declared_type='CBLGeoRect' index='0' name='boundingBox' type='{CBLGeoRect={CBLGeoPoint=dd}{CBLGeoPoint=dd}}'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDescending:'>
+<arg declared_type='BOOL' index='0' name='descending' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setEndKey:'>
+<arg declared_type='id' index='0' name='endKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setEndKeyDocID:'>
+<arg declared_type='NSString*' index='0' name='endKeyDocID' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFullTextQuery:'>
+<arg declared_type='NSString*' index='0' name='fullTextQuery' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFullTextRanking:'>
+<arg declared_type='BOOL' index='0' name='fullTextRanking' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFullTextSnippets:'>
+<arg declared_type='BOOL' index='0' name='fullTextSnippets' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setGroupLevel:'>
+<arg declared_type='NSUInteger' index='0' name='groupLevel' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setIndexUpdateMode:'>
+<arg declared_type='CBLIndexUpdateMode' index='0' name='indexUpdateMode' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setKeys:'>
+<arg declared_type='NSArray*' index='0' name='keys' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setLimit:'>
+<arg declared_type='NSUInteger' index='0' name='limit' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMapOnly:'>
+<arg declared_type='BOOL' index='0' name='mapOnly' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPrefetch:'>
+<arg declared_type='BOOL' index='0' name='prefetch' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setSkip:'>
+<arg declared_type='NSUInteger' index='0' name='skip' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setStartKey:'>
+<arg declared_type='id' index='0' name='startKey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setStartKeyDocID:'>
+<arg declared_type='NSString*' index='0' name='startKeyDocID' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='skip'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='startKey'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='startKeyDocID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='CBLQueryEnumerator'>
+<method selector='count'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='nextRow'>
+<retval declared_type='CBLQueryRow*' type='@'/>
+</method>
+<method selector='reset'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='rowAtIndex:'>
+<arg declared_type='NSUInteger' index='0' name='index' type='I' type64='Q'/>
+<retval declared_type='CBLQueryRow*' type='@'/>
+</method>
+<method selector='sequenceNumber'>
+<retval declared_type='UInt64' type='Q'/>
+</method>
+<method selector='stale'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='CBLQueryRow'>
+<method selector='conflictingRevisions'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='database'>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='document'>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='documentID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='documentProperties'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='documentRevisionID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='key'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='key0'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='key1'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='key2'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='key3'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='keyAtIndex:'>
+<arg declared_type='NSUInteger' index='0' name='index' type='I' type64='Q'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='sequenceNumber'>
+<retval declared_type='UInt64' type='Q'/>
+</method>
+<method selector='sourceDocumentID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='value'>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='CBLReplication'>
+<method selector='OAuth'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='changesCount'>
+<retval declared_type='unsigned int' type='I'/>
+</method>
+<method selector='channels'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='completedChangesCount'>
+<retval declared_type='unsigned int' type='I'/>
+</method>
+<method selector='continuous'>
+<retval declared_type='_Bool' type='B'/>
+</method>
+<method selector='createTarget'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='credential'>
+<retval declared_type='NSURLCredential*' type='@'/>
+</method>
+<method selector='customProperties'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='documentIDs'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='facebookEmailAddress'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='filter'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='filterParams'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='headers'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='lastError'>
+<retval declared_type='NSError*' type='@'/>
+</method>
+<method selector='localDatabase'>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='network'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='personaEmailAddress'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='personaOrigin'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='pull'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='registerFacebookToken:forEmailAddress:'>
+<arg declared_type='NSString*' index='0' name='token' null_accepted='false' type='@'/>
+<arg declared_type='NSString*' index='1' name='email' null_accepted='false' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='registerPersonaAssertion:'>
+<arg declared_type='NSString*' index='0' name='assertion' null_accepted='false' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='remoteURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='restart'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='running'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='setAnchorCerts:onlyThese:'>
+<arg declared_type='NSArray*' index='0' name='certs' type='@'/>
+<arg declared_type='BOOL' index='1' name='onlyThese' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setChannels:'>
+<arg declared_type='NSArray*' index='0' name='channels' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setContinuous:'>
+<arg declared_type='_Bool' index='0' name='continuous' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCreateTarget:'>
+<arg declared_type='BOOL' index='0' name='createTarget' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCredential:'>
+<arg declared_type='NSURLCredential*' index='0' name='credential' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCustomProperties:'>
+<arg declared_type='NSDictionary*' index='0' name='customProperties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDocumentIDs:'>
+<arg declared_type='NSArray*' index='0' name='documentIDs' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFacebookEmailAddress:'>
+<arg declared_type='NSString*' index='0' name='facebookEmailAddress' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFilter:'>
+<arg declared_type='NSString*' index='0' name='filter' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFilterParams:'>
+<arg declared_type='NSDictionary*' index='0' name='filterParams' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setHeaders:'>
+<arg declared_type='NSDictionary*' index='0' name='headers' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setNetwork:'>
+<arg declared_type='NSString*' index='0' name='network' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setOAuth:'>
+<arg declared_type='NSDictionary*' index='0' name='OAuth' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPersonaEmailAddress:'>
+<arg declared_type='NSString*' index='0' name='personaEmailAddress' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='start'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='status'>
+<retval declared_type='CBLReplicationStatus' type='i'/>
+</method>
+<method selector='stop'>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='CBLRevision'>
+<method selector='attachmentNamed:'>
+<arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
+<retval declared_type='CBLAttachment*' type='@'/>
+</method>
+<method selector='attachmentNames'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='attachments'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='database'>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='document'>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='getRevisionHistory:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='isDeletion'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isGone'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='objectForKeyedSubscript:'>
+<arg declared_type='NSString*' index='0' name='key' null_accepted='false' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='parentRevision'>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='parentRevisionID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='properties'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='propertyForKey:'>
+<arg declared_type='NSString*' index='0' name='key' null_accepted='false' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='revisionID'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='userProperties'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+</class>
+<class name='CBLSavedRevision'>
+<method selector='createRevision'>
+<retval declared_type='CBLUnsavedRevision*' type='@'/>
+</method>
+<method selector='createRevisionWithProperties:error:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='deleteDocument:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='propertiesAvailable'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='CBLUITableSource'>
+<method selector='deleteDocuments:error:'>
+<arg declared_type='NSArray*' index='0' name='documents' null_accepted='false' type='@'/>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='deleteDocumentsAtIndexes:error:'>
+<arg declared_type='NSArray*' index='0' name='indexPaths' null_accepted='false' type='@'/>
+<arg declared_type='NSError**' index='1' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='deletionAllowed'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='documentAtIndexPath:'>
+<arg declared_type='NSIndexPath*' index='0' name='path' null_accepted='false' type='@'/>
+<retval declared_type='CBLDocument*' type='@'/>
+</method>
+<method selector='indexPathForDocument:'>
+<arg declared_type='CBLDocument*' index='0' name='document' null_accepted='false' type='@'/>
+<retval declared_type='NSIndexPath*' type='@'/>
+</method>
+<method selector='labelProperty'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='query'>
+<retval declared_type='CBLLiveQuery*' type='@'/>
+</method>
+<method selector='reloadFromQuery'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='rowAtIndex:'>
+<arg declared_type='NSUInteger' index='0' name='index' type='I' type64='Q'/>
+<retval declared_type='CBLQueryRow*' type='@'/>
+</method>
+<method selector='rowAtIndexPath:'>
+<arg declared_type='NSIndexPath*' index='0' name='path' null_accepted='false' type='@'/>
+<retval declared_type='CBLQueryRow*' type='@'/>
+</method>
+<method selector='rows'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='setDeletionAllowed:'>
+<arg declared_type='BOOL' index='0' name='deletionAllowed' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setLabelProperty:'>
+<arg declared_type='NSString*' index='0' name='labelProperty' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setQuery:'>
+<arg declared_type='CBLLiveQuery*' index='0' name='query' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setTableView:'>
+<arg declared_type='UITableView*' index='0' name='tableView' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='tableView'>
+<retval declared_type='UITableView*' type='@'/>
+</method>
+</class>
+<class name='CBLUnsavedRevision'>
+<method selector='isDeletion'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='properties'>
+<retval declared_type='NSMutableDictionary*' type='@'/>
+</method>
+<method selector='removeAttachmentNamed:'>
+<arg declared_type='NSString*' index='0' name='name' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='save:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='saveAllowingConflict:'>
+<arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='setAttachmentNamed:withContentType:content:'>
+<arg declared_type='NSString*' index='0' name='name' type='@'/>
+<arg declared_type='NSString*' index='1' name='mimeType' type='@'/>
+<arg declared_type='NSData*' index='2' name='content' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAttachmentNamed:withContentType:contentURL:'>
+<arg declared_type='NSString*' index='0' name='name' type='@'/>
+<arg declared_type='NSString*' index='1' name='mimeType' type='@'/>
+<arg declared_type='NSURL*' index='2' name='fileURL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setIsDeletion:'>
+<arg declared_type='BOOL' index='0' name='isDeletion' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setObject:forKeyedSubscript:'>
+<arg declared_type='id' index='0' name='object' type='@'/>
+<arg declared_type='NSString*' index='1' name='key' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setProperties:'>
+<arg declared_type='NSMutableDictionary*' index='0' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setUserProperties:'>
+<arg declared_type='NSDictionary*' index='0' name='userProperties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='userProperties'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+</class>
+<class name='CBLView'>
+<method class_method='true' selector='compiler'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='createQuery'>
+<retval declared_type='CBLQuery*' type='@'/>
+</method>
+<method selector='database'>
+<retval declared_type='CBLDatabase*' type='@'/>
+</method>
+<method selector='deleteIndex'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='deleteView'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='lastSequenceIndexed'>
+<retval declared_type='SInt64' type='q'/>
+</method>
+<method selector='mapBlock'>
+<retval declared_type='CBLMapBlock' function_pointer='true' type='@?'>
+<arg declared_type='NSDictionary*' type='@'/>
+<arg declared_type='CBLMapEmitBlock' function_pointer='true' type='@?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</retval>
+</method>
+<method selector='name'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='reduceBlock'>
+<retval declared_type='CBLReduceBlock' function_pointer='true' type='@?'>
+<arg declared_type='NSArray*' type='@'/>
+<arg declared_type='NSArray*' type='@'/>
+<arg declared_type='BOOL' type='B'/>
+<retval declared_type='id' type='@'/>
+</retval>
+</method>
+<method class_method='true' selector='setCompiler:'>
+<arg declared_type='id' index='0' name='compiler' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setMapBlock:reduceBlock:version:'>
+<arg declared_type='CBLMapBlock' function_pointer='true' index='0' name='mapBlock' null_accepted='false' type='@?'>
+<arg declared_type='NSDictionary*' type='@'/>
+<arg declared_type='CBLMapEmitBlock' function_pointer='true' type='@?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</arg>
+<arg declared_type='CBLReduceBlock' function_pointer='true' index='1' name='reduceBlock' type='@?'>
+<arg declared_type='NSArray*' type='@'/>
+<arg declared_type='NSArray*' type='@'/>
+<arg declared_type='BOOL' type='B'/>
+<retval declared_type='id' type='@'/>
+</arg>
+<arg declared_type='NSString*' index='2' name='version' null_accepted='false' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setMapBlock:version:'>
+<arg declared_type='CBLMapBlock' function_pointer='true' index='0' name='mapBlock' null_accepted='false' type='@?'>
+<arg declared_type='NSDictionary*' type='@'/>
+<arg declared_type='CBLMapEmitBlock' function_pointer='true' type='@?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</arg>
+<arg declared_type='NSString*' index='1' name='version' null_accepted='false' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='stale'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='totalValues:'>
+<arg declared_type='NSArray*' index='0' name='values' type='@'/>
+<retval declared_type='NSNumber*' type='@'/>
+</method>
+</class>
+<class name='MYDynamicObject'>
+<method class_method='true' selector='classOfProperty:'>
+<arg declared_type='NSString*' index='0' name='propertyName' type='@'/>
+<retval declared_type='Class' type='#'/>
+</method>
+<method selector='getValueOfProperty:'>
+<arg declared_type='NSString*' index='0' name='property' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='getterKey:'>
+<arg declared_type='SEL' index='0' name='sel' type=':'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method class_method='true' selector='impForGetterOfProperty:ofClass:'>
+<arg declared_type='NSString*' index='0' name='property' type='@'/>
+<arg declared_type='Class' index='1' name='propertyClass' type='#'/>
+<retval declared_type='IMP' function_pointer='true' type='^?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='SEL' type=':'/>
+<retval declared_type='id' type='@'/>
+</retval>
+</method>
+<method class_method='true' selector='impForGetterOfProperty:ofType:'>
+<arg declared_type='NSString*' index='0' name='property' type='@'/>
+<arg const='true' declared_type='char*' index='1' name='propertyType' type='*'/>
+<retval declared_type='IMP' function_pointer='true' type='^?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='SEL' type=':'/>
+<retval declared_type='id' type='@'/>
+</retval>
+</method>
+<method class_method='true' selector='impForSetterOfProperty:ofClass:'>
+<arg declared_type='NSString*' index='0' name='property' type='@'/>
+<arg declared_type='Class' index='1' name='propertyClass' type='#'/>
+<retval declared_type='IMP' function_pointer='true' type='^?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='SEL' type=':'/>
+<retval declared_type='id' type='@'/>
+</retval>
+</method>
+<method class_method='true' selector='impForSetterOfProperty:ofType:'>
+<arg declared_type='NSString*' index='0' name='property' type='@'/>
+<arg const='true' declared_type='char*' index='1' name='propertyType' type='*'/>
+<retval declared_type='IMP' function_pointer='true' type='^?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='SEL' type=':'/>
+<retval declared_type='id' type='@'/>
+</retval>
+</method>
+<method class_method='true' selector='propertyNames'>
+<retval declared_type='NSSet*' type='@'/>
+</method>
+<method selector='setValue:ofProperty:'>
+<arg declared_type='id' index='0' name='value' type='@'/>
+<arg declared_type='NSString*' index='1' name='property' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method class_method='true' selector='setterKey:'>
+<arg declared_type='SEL' index='0' name='sel' type=':'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='CBLDocument:didChange:'>
+<arg declared_type='CBLDocument*' index='0' name='doc' null_accepted='false' type='@'/>
+<arg declared_type='CBLDatabaseChange*' index='1' name='change' null_accepted='false' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='changedKeys'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='compileFilterFunction:language:'>
+<arg declared_type='NSString*' index='0' name='filterSource' type='@'/>
+<arg declared_type='NSString*' index='1' name='language' type='@'/>
+<retval declared_type='CBLFilterBlock' function_pointer='true' type='@?'>
+<arg declared_type='CBLSavedRevision*' type='@'/>
+<arg declared_type='NSDictionary*' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</retval>
+</method>
+<method selector='compileMapFunction:language:'>
+<arg declared_type='NSString*' index='0' name='mapSource' type='@'/>
+<arg declared_type='NSString*' index='1' name='language' type='@'/>
+<retval declared_type='CBLMapBlock' function_pointer='true' type='@?'>
+<arg declared_type='NSDictionary*' type='@'/>
+<arg declared_type='CBLMapEmitBlock' function_pointer='true' type='@?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</retval>
+</method>
+<method selector='compileReduceFunction:language:'>
+<arg declared_type='NSString*' index='0' name='reduceSource' type='@'/>
+<arg declared_type='NSString*' index='1' name='language' type='@'/>
+<retval declared_type='CBLReduceBlock' function_pointer='true' type='@?'>
+<arg declared_type='NSArray*' type='@'/>
+<arg declared_type='NSArray*' type='@'/>
+<arg declared_type='BOOL' type='B'/>
+<retval declared_type='id' type='@'/>
+</retval>
+</method>
+<method selector='couchTableSource:cellForRowAtIndexPath:'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='NSIndexPath*' index='1' name='indexPath' type='@'/>
+<retval declared_type='UITableViewCell*' type='@'/>
+</method>
+<method selector='couchTableSource:deleteFailed:'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='couchTableSource:deleteRow:'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='CBLQueryRow*' index='1' name='row' type='@'/>
+<retval declared_type='_Bool' type='B'/>
+</method>
+<method selector='couchTableSource:updateFromQuery:previousRows:'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='CBLLiveQuery*' index='1' name='query' type='@'/>
+<arg declared_type='NSArray*' index='2' name='previousRows' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='couchTableSource:willUpdateFromQuery:'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='CBLLiveQuery*' index='1' name='query' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='couchTableSource:willUseCell:forRow:'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='UITableViewCell*' index='1' name='cell' type='@'/>
+<arg declared_type='CBLQueryRow*' index='2' name='row' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='currentRevision'>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='encodeAsJSON'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithJSON:'>
+<arg declared_type='id' index='0' name='jsonObject' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='reject'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='rejectWithMessage:'>
+<arg declared_type='NSString*' index='0' name='message' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setOnMutate:'>
+<arg declared_type='CBLOnMutateBlock' function_pointer='true' index='0' name='onMutate' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='validateChanges:'>
+<arg declared_type='CBLChangeEnumeratorBlock' function_pointer='true' index='0' name='enumerator' type='@?'>
+<arg declared_type='NSString*' type='@'/>
+<arg declared_type='id' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</arg>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<informal_protocol name='CBLDocumentModel'>
+<method selector='CBLDocument:didChange:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='CBLDocument*' index='0' name='doc' null_accepted='false' type='@'/>
+<arg declared_type='CBLDatabaseChange*' index='1' name='change' null_accepted='false' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='CBLFilterCompiler'>
+<method selector='compileFilterFunction:language:' type='@?16@0:4@8@12' type64='@?32@0:8@16@24'>
+<arg declared_type='NSString*' index='0' name='filterSource' type='@'/>
+<arg declared_type='NSString*' index='1' name='language' type='@'/>
+<retval declared_type='CBLFilterBlock' function_pointer='true' type='@?'>
+<arg declared_type='CBLSavedRevision*' type='@'/>
+<arg declared_type='NSDictionary*' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</retval>
+</method>
+</informal_protocol>
+<informal_protocol name='CBLJSONEncoding'>
+<method selector='encodeAsJSON' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithJSON:' type='@12@0:4@8' type64='@24@0:8@16'>
+<arg declared_type='id' index='0' name='jsonObject' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='setOnMutate:' type='v12@0:4@?8' type64='v24@0:8@?16'>
+<arg declared_type='CBLOnMutateBlock' function_pointer='true' index='0' name='onMutate' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='CBLUITableDelegate'>
+<method selector='couchTableSource:cellForRowAtIndexPath:' type='@16@0:4@8@12' type64='@32@0:8@16@24'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='NSIndexPath*' index='1' name='indexPath' type='@'/>
+<retval declared_type='UITableViewCell*' type='@'/>
+</method>
+<method selector='couchTableSource:deleteFailed:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='NSError*' index='1' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='couchTableSource:deleteRow:' type='B16@0:4@8@12' type64='B32@0:8@16@24'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='CBLQueryRow*' index='1' name='row' type='@'/>
+<retval declared_type='_Bool' type='B'/>
+</method>
+<method selector='couchTableSource:updateFromQuery:previousRows:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='CBLLiveQuery*' index='1' name='query' type='@'/>
+<arg declared_type='NSArray*' index='2' name='previousRows' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='couchTableSource:willUpdateFromQuery:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='CBLLiveQuery*' index='1' name='query' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='couchTableSource:willUseCell:forRow:' type='v20@0:4@8@12@16' type64='v40@0:8@16@24@32'>
+<arg declared_type='CBLUITableSource*' index='0' name='source' type='@'/>
+<arg declared_type='UITableViewCell*' index='1' name='cell' type='@'/>
+<arg declared_type='CBLQueryRow*' index='2' name='row' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='CBLValidationContext'>
+<method selector='changedKeys' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='currentRevision' type='@8@0:4' type64='@16@0:8'>
+<retval declared_type='CBLSavedRevision*' type='@'/>
+</method>
+<method selector='reject' type='v8@0:4' type64='v16@0:8'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='rejectWithMessage:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='NSString*' index='0' name='message' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='validateChanges:' type='B12@0:4@?8' type64='B24@0:8@?16'>
+<arg declared_type='CBLChangeEnumeratorBlock' function_pointer='true' index='0' name='enumerator' type='@?'>
+<arg declared_type='NSString*' type='@'/>
+<arg declared_type='id' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</arg>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</informal_protocol>
+<informal_protocol name='CBLViewCompiler'>
+<method selector='compileMapFunction:language:' type='@?16@0:4@8@12' type64='@?32@0:8@16@24'>
+<arg declared_type='NSString*' index='0' name='mapSource' type='@'/>
+<arg declared_type='NSString*' index='1' name='language' type='@'/>
+<retval declared_type='CBLMapBlock' function_pointer='true' type='@?'>
+<arg declared_type='NSDictionary*' type='@'/>
+<arg declared_type='CBLMapEmitBlock' function_pointer='true' type='@?'>
+<arg declared_type='id' type='@'/>
+<arg declared_type='id' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</retval>
+</method>
+<method selector='compileReduceFunction:language:' type='@?16@0:4@8@12' type64='@?32@0:8@16@24'>
+<arg declared_type='NSString*' index='0' name='reduceSource' type='@'/>
+<arg declared_type='NSString*' index='1' name='language' type='@'/>
+<retval declared_type='CBLReduceBlock' function_pointer='true' type='@?'>
+<arg declared_type='NSArray*' type='@'/>
+<arg declared_type='NSArray*' type='@'/>
+<arg declared_type='BOOL' type='B'/>
+<retval declared_type='id' type='@'/>
+</retval>
+</method>
+</informal_protocol>
+</signatures>
