@@ -6,7 +6,11 @@ class AppDelegate
     @database = manager.databaseNamed("something", error: error_ptr)
     puts "unabled to get database" unless @database
 
-    myViewQuery
+    doc = @database.createDocument
+    properties = { "type" => "foo" }
+    doc.putProperties properties, error: error_ptr
+
+    myViewQuery.run(error_ptr).each { |value| puts value.document.properties }
 
     true
   end
@@ -18,8 +22,7 @@ class AppDelegate
   end
 
   def setupMapBlockforView view
-    mapBlock = lambda { |doc, emit| emit(doc["type"], nil) }
+    mapBlock = lambda { |doc, emit| emit.call(doc["type"], nil) }
     view.setMapBlock(mapBlock, reduceBlock: nil, version: "1")
   end
-
 end

@@ -24,7 +24,7 @@ Motion::Project::App.setup do |app|
                      headers_dir: 'Headers')
 
   app.pods do
-    pod 'couchbase-lite-ios', '~> 1.0-beta3'
+    pod 'couchbase-lite-ios', '~> 1.0'
   end
 
 end

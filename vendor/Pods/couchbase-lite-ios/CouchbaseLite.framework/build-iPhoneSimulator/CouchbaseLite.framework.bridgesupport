@@ -8,8 +8,9 @@
 <field declared_type='CBLGeoPoint' name='min' type='{CBLGeoPoint=&quot;x&quot;d&quot;y&quot;d}'/>
 <field declared_type='CBLGeoPoint' name='max' type='{CBLGeoPoint=&quot;x&quot;d&quot;y&quot;d}'/>
 </struct>
-<struct name='CBLManagerOptions' type='{CBLManagerOptions=&quot;readOnly&quot;B}'>
+<struct name='CBLManagerOptions' type='{CBLManagerOptions=&quot;readOnly&quot;B&quot;fileProtection&quot;I}' type64='{CBLManagerOptions=&quot;readOnly&quot;B&quot;fileProtection&quot;Q}'>
 <field declared_type='_Bool' name='readOnly' type='B'/>
+<field declared_type='NSDataWritingOptions' name='fileProtection' type='I' type64='Q'/>
 </struct>
 <constant const='true' declared_type='NSString*' name='CBLHTTPErrorDomain' type='@'/>
 <constant const='true' declared_type='NSString*' name='kCBLDatabaseChangeNotification' type='@'/>
@@ -133,12 +134,39 @@
 <retval declared_type='CBLRevision*' type='@'/>
 </method>
 </class>
+<class name='CBLAuthenticator'>
+<method class_method='true' selector='OAuth1AuthenticatorWithConsumerKey:consumerSecret:token:tokenSecret:signatureMethod:'>
+<arg declared_type='NSString*' index='0' name='consumerKey' type='@'/>
+<arg declared_type='NSString*' index='1' name='consumerSecret' type='@'/>
+<arg declared_type='NSString*' index='2' name='token' type='@'/>
+<arg declared_type='NSString*' index='3' name='tokenSecret' type='@'/>
+<arg declared_type='NSString*' index='4' name='signatureMethod' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='basicAuthenticatorWithName:password:'>
+<arg declared_type='NSString*' index='0' name='name' type='@'/>
+<arg declared_type='NSString*' index='1' name='password' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='facebookAuthenticatorWithToken:'>
+<arg declared_type='NSString*' index='0' name='token' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='personaAuthenticatorWithAssertion:'>
+<arg declared_type='NSString*' index='0' name='assertion' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
 <class name='CBLDatabase'>
 <method selector='allReplications'>
 <retval declared_type='NSArray*' type='@'/>
 </method>
 <method selector='autosaveAllModels:'>
 <arg declared_type='NSError**' index='0' name='outError' type='^@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='close:'>
+<arg declared_type='NSError**' index='0' name='error' type='^@'/>
 <retval declared_type='BOOL' type='B'/>
 </method>
 <method selector='compact:'>
@@ -448,6 +476,11 @@
 <arg declared_type='NSDate*' index='0' name='date' type='@'/>
 <retval declared_type='NSString*' type='@'/>
 </method>
+<method class_method='true' selector='JSONObjectWithDate:timeZone:'>
+<arg declared_type='NSDate*' index='0' name='date' type='@'/>
+<arg declared_type='NSTimeZone*' index='1' name='tz' type='@'/>
+<retval declared_type='NSString*' type='@'/>
+</method>
 <method class_method='true' selector='absoluteTimeWithJSONObject:'>
 <arg declared_type='id' index='0' name='jsonObject' type='@'/>
 <retval declared_type='CFAbsoluteTime' type='d'/>
@@ -468,6 +501,10 @@
 <method class_method='true' selector='dateWithJSONObject:'>
 <arg declared_type='id' index='0' name='jsonObject' type='@'/>
 <retval declared_type='NSDate*' type='@'/>
+</method>
+<method class_method='true' selector='estimateMemorySize:'>
+<arg declared_type='id' index='0' name='object' type='@'/>
+<retval declared_type='size_t' type='L' type64='Q'/>
 </method>
 <method class_method='true' selector='stringWithJSONObject:options:error:'>
 <arg declared_type='id' index='0' name='obj' type='@'/>
@@ -549,6 +586,9 @@
 <arg declared_type='NSString*' index='0' name='type' type='@'/>
 <retval declared_type='void' type='v'/>
 </method>
+<method selector='excludedFromBackup'>
+<retval declared_type='BOOL' type='B'/>
+</method>
 <method selector='existingDatabaseNamed:error:'>
 <arg declared_type='NSString*' index='0' name='name' null_accepted='false' type='@'/>
 <arg declared_type='NSError**' index='1' name='outError' type='^@'/>
@@ -559,7 +599,7 @@
 </method>
 <method selector='initWithDirectory:options:error:'>
 <arg declared_type='NSString*' index='0' name='directory' null_accepted='false' type='@'/>
-<arg const='true' declared_type='CBLManagerOptions*' index='1' name='options' type='^{CBLManagerOptions=B}'/>
+<arg const='true' declared_type='CBLManagerOptions*' index='1' name='options' type='^{CBLManagerOptions=BI}' type64='^{CBLManagerOptions=BQ}'/>
 <arg declared_type='NSError**' index='2' name='outError' type='^@'/>
 <retval declared_type='id' type='@'/>
 </method>
@@ -574,6 +614,14 @@
 <arg declared_type='NSString*' index='0' name='key' null_accepted='false' type='@'/>
 <retval declared_type='CBLDatabase*' type='@'/>
 </method>
+<method class_method='true' selector='redirectLogging:'>
+<arg declared_type='void (^)(NSString *, NSString *)' function_pointer='true' index='0' name='callback' type='@?'>
+<arg declared_type='NSString*' type='@'/>
+<arg declared_type='NSString*' type='@'/>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
 <method selector='replaceDatabaseNamed:withDatabaseFile:withAttachments:error:'>
 <arg declared_type='NSString*' index='0' name='databaseName' null_accepted='false' type='@'/>
 <arg declared_type='NSString*' index='1' name='databasePath' null_accepted='false' type='@'/>
@@ -583,6 +631,10 @@
 </method>
 <method selector='setDispatchQueue:'>
 <arg declared_type='dispatch_queue_t' index='0' name='dispatchQueue' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setExcludedFromBackup:'>
+<arg declared_type='BOOL' index='0' name='excludedFromBackup' type='B'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method class_method='true' selector='sharedInstance'>
@@ -701,6 +753,10 @@
 <arg declared_type='CBLDatabase*' index='0' name='database' type='@'/>
 <retval declared_type='void' type='v'/>
 </method>
+<method selector='setType:'>
+<arg declared_type='NSString*' index='0' name='type' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
 <method selector='setValue:ofProperty:'>
 <arg declared_type='id' index='0' name='value' type='@'/>
 <arg declared_type='NSString*' index='1' name='property' null_accepted='false' type='@'/>
@@ -708,6 +764,13 @@
 </method>
 <method selector='timeSinceExternallyChanged'>
 <retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method selector='type'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='willSave:'>
+<arg declared_type='NSSet*' index='0' name='changedPropertyNames' type='@'/>
+<retval declared_type='void' type='v'/>
 </method>
 </class>
 <class name='CBLModelFactory'>
@@ -734,7 +797,7 @@
 </class>
 <class name='CBLQuery'>
 <method selector='allDocsMode'>
-<retval declared_type='CBLAllDocsMode' type='i'/>
+<retval declared_type='CBLAllDocsMode' type='I'/>
 </method>
 <method selector='asLiveQuery'>
 <retval declared_type='CBLLiveQuery*' type='@'/>
@@ -766,8 +829,14 @@
 <method selector='groupLevel'>
 <retval declared_type='NSUInteger' type='I' type64='Q'/>
 </method>
+<method selector='inclusiveEnd'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='inclusiveStart'>
+<retval declared_type='BOOL' type='B'/>
+</method>
 <method selector='indexUpdateMode'>
-<retval declared_type='CBLIndexUpdateMode' type='i'/>
+<retval declared_type='CBLIndexUpdateMode' type='I'/>
 </method>
 <method selector='keys'>
 <retval declared_type='NSArray*' type='@'/>
@@ -778,8 +847,14 @@
 <method selector='mapOnly'>
 <retval declared_type='BOOL' type='B'/>
 </method>
+<method selector='postFilter'>
+<retval declared_type='NSPredicate*' type='@'/>
+</method>
 <method selector='prefetch'>
 <retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='prefixMatchLevel'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
 </method>
 <method selector='run:'>
 <arg declared_type='NSError**' index='0' name='outError' type='^@'/>
@@ -794,7 +869,7 @@
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='setAllDocsMode:'>
-<arg declared_type='CBLAllDocsMode' index='0' name='allDocsMode' type='i'/>
+<arg declared_type='CBLAllDocsMode' index='0' name='allDocsMode' type='I'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='setBoundingBox:'>
@@ -829,8 +904,16 @@
 <arg declared_type='NSUInteger' index='0' name='groupLevel' type='I' type64='Q'/>
 <retval declared_type='void' type='v'/>
 </method>
+<method selector='setInclusiveEnd:'>
+<arg declared_type='BOOL' index='0' name='inclusiveEnd' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setInclusiveStart:'>
+<arg declared_type='BOOL' index='0' name='inclusiveStart' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
 <method selector='setIndexUpdateMode:'>
-<arg declared_type='CBLIndexUpdateMode' index='0' name='indexUpdateMode' type='i'/>
+<arg declared_type='CBLIndexUpdateMode' index='0' name='indexUpdateMode' type='I'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='setKeys:'>
@@ -845,12 +928,24 @@
 <arg declared_type='BOOL' index='0' name='mapOnly' type='B'/>
 <retval declared_type='void' type='v'/>
 </method>
+<method selector='setPostFilter:'>
+<arg declared_type='NSPredicate*' index='0' name='postFilter' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
 <method selector='setPrefetch:'>
 <arg declared_type='BOOL' index='0' name='prefetch' type='B'/>
 <retval declared_type='void' type='v'/>
 </method>
+<method selector='setPrefixMatchLevel:'>
+<arg declared_type='NSUInteger' index='0' name='prefixMatchLevel' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
 <method selector='setSkip:'>
 <arg declared_type='NSUInteger' index='0' name='skip' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setSortDescriptors:'>
+<arg declared_type='NSArray*' index='0' name='sortDescriptors' type='@'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='setStartKey:'>
@@ -863,6 +958,9 @@
 </method>
 <method selector='skip'>
 <retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='sortDescriptors'>
+<retval declared_type='NSArray*' type='@'/>
 </method>
 <method selector='startKey'>
 <retval declared_type='id' type='@'/>
@@ -887,6 +985,10 @@
 </method>
 <method selector='sequenceNumber'>
 <retval declared_type='UInt64' type='Q'/>
+</method>
+<method selector='sortUsingDescriptors:'>
+<arg declared_type='NSArray*' index='0' name='sortDescriptors' type='@'/>
+<retval declared_type='void' type='v'/>
 </method>
 <method selector='stale'>
 <retval declared_type='BOOL' type='B'/>
@@ -944,6 +1046,9 @@
 <method selector='OAuth'>
 <retval declared_type='NSDictionary*' type='@'/>
 </method>
+<method selector='authenticator'>
+<retval declared_type='id' type='@'/>
+</method>
 <method selector='changesCount'>
 <retval declared_type='unsigned int' type='I'/>
 </method>
@@ -965,11 +1070,12 @@
 <method selector='customProperties'>
 <retval declared_type='NSDictionary*' type='@'/>
 </method>
+<method selector='deleteCookieNamed:'>
+<arg declared_type='NSString*' index='0' name='name' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
 <method selector='documentIDs'>
 <retval declared_type='NSArray*' type='@'/>
-</method>
-<method selector='facebookEmailAddress'>
-<retval declared_type='NSString*' type='@'/>
 </method>
 <method selector='filter'>
 <retval declared_type='NSString*' type='@'/>
@@ -989,22 +1095,10 @@
 <method selector='network'>
 <retval declared_type='NSString*' type='@'/>
 </method>
-<method selector='personaEmailAddress'>
-<retval declared_type='NSString*' type='@'/>
-</method>
 <method selector='personaOrigin'>
 <retval declared_type='NSURL*' type='@'/>
 </method>
 <method selector='pull'>
-<retval declared_type='BOOL' type='B'/>
-</method>
-<method selector='registerFacebookToken:forEmailAddress:'>
-<arg declared_type='NSString*' index='0' name='token' null_accepted='false' type='@'/>
-<arg declared_type='NSString*' index='1' name='email' null_accepted='false' type='@'/>
-<retval declared_type='BOOL' type='B'/>
-</method>
-<method selector='registerPersonaAssertion:'>
-<arg declared_type='NSString*' index='0' name='assertion' null_accepted='false' type='@'/>
 <retval declared_type='BOOL' type='B'/>
 </method>
 <method selector='remoteURL'>
@@ -1021,12 +1115,24 @@
 <arg declared_type='BOOL' index='1' name='onlyThese' type='B'/>
 <retval declared_type='void' type='v'/>
 </method>
+<method selector='setAuthenticator:'>
+<arg declared_type='id' index='0' name='authenticator' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
 <method selector='setChannels:'>
 <arg declared_type='NSArray*' index='0' name='channels' type='@'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='setContinuous:'>
 <arg declared_type='_Bool' index='0' name='continuous' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCookieNamed:withValue:path:expirationDate:secure:'>
+<arg declared_type='NSString*' index='0' name='name' type='@'/>
+<arg declared_type='NSString*' index='1' name='value' type='@'/>
+<arg declared_type='NSString*' index='2' name='path' type='@'/>
+<arg declared_type='NSDate*' index='3' name='expirationDate' type='@'/>
+<arg declared_type='BOOL' index='4' name='secure' type='B'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='setCreateTarget:'>
@@ -1043,10 +1149,6 @@
 </method>
 <method selector='setDocumentIDs:'>
 <arg declared_type='NSArray*' index='0' name='documentIDs' type='@'/>
-<retval declared_type='void' type='v'/>
-</method>
-<method selector='setFacebookEmailAddress:'>
-<arg declared_type='NSString*' index='0' name='facebookEmailAddress' type='@'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='setFilter:'>
@@ -1069,18 +1171,21 @@
 <arg declared_type='NSDictionary*' index='0' name='OAuth' type='@'/>
 <retval declared_type='void' type='v'/>
 </method>
-<method selector='setPersonaEmailAddress:'>
-<arg declared_type='NSString*' index='0' name='personaEmailAddress' type='@'/>
+<method selector='setSuspended:'>
+<arg declared_type='BOOL' index='0' name='suspended' type='B'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='start'>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='status'>
-<retval declared_type='CBLReplicationStatus' type='i'/>
+<retval declared_type='CBLReplicationStatus' type='I'/>
 </method>
 <method selector='stop'>
 <retval declared_type='void' type='v'/>
+</method>
+<method selector='suspended'>
+<retval declared_type='BOOL' type='B'/>
 </method>
 </class>
 <class name='CBLRevision'>
