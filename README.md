@@ -1,5 +1,6 @@
 motion-cbl-block-bug
 ====================
+*UPDATE* This has been resolved!
 
 RubyMotion copy block bug
 
